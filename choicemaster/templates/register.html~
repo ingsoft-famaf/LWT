@@ -1,0 +1,38 @@
+<form method="post">
+<div class="row">
+<h1 style="padding-left: 30px;"><span class="form-group"><strong>Complete <span style="color: #ff9900;">the form</span> to create <span style="color: #00ccff;">your account</span></strong></span></h1>
+<ul>
+<li class="col-md-8 col-md-offset-2"><span class="form-group"><strong><label>First Name</label>&nbsp;&nbsp;&nbsp;</strong>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; <input class="form-control" name="first_name" type="text" /></span></li>
+</ul>
+</div>
+<div class="row">
+<ul style="list-style-type: disc;">
+<li class="col-md-8 col-md-offset-2"><em><strong><span class="form-group"><label>Last Name</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <input class="form-control" name="last_name" type="text" /></span></strong></em></li>
+</ul>
+</div>
+<div class="col-md-8 col-md-offset-2">
+<ul>
+<li class="form-group"><strong><label>Username</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong><input class="form-control" name="username" type="text" /></li>
+</ul>
+</div>
+<div class="col-md-8 col-md-offset-2">
+<ul style="list-style-type: disc;">
+<li class="form-group"><strong><label>E-mail Account</label>&nbsp;&nbsp;&nbsp;&nbsp; </strong><input class="form-control" name="email" type="text" /></li>
+</ul>
+</div>
+<div class="col-md-8 col-md-offset-2">
+<ul style="list-style-type: disc;">
+<li class="form-group"><strong><label>Password &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label></strong>&nbsp; <input class="form-control" name="password1" type="password" /></li>
+</ul>
+</div>
+<div class="row">
+<ul style="list-style-type: disc;">
+<li class="col-md-8 col-md-offset-2"><span class="form-group"><strong><label>Confirm password</label></strong> <input class="form-control" name="password2" type="password" /></span></li>
+</ul>
+</div>
+<div class="row">
+<div class="col-md-8 col-md-offset-2">&nbsp; <br />
+<h2 class="form-group" style="padding-left: 60px;"><span style="background-color: #ff6600; color: #000000;"><button class="btn btn-primary " type="submit">Register</button></span></h2>
+</div>
+</div>
+</form>
