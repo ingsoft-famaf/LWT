@@ -8,6 +8,16 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
+
+GITHUB
+Client ID
+    7a93ff53aa28a846bbb9
+Client Secret
+    b92b40280e8401f7cadc4294fdbe5ba3bea98955
+
+GOOGLE
+ 124896030792-b8sjqvop87vh6hngpf5c3d43mbh7co7g.apps.googleusercontent.com 
+ EKF048snJ5FBIdhmiHHtxcoO 
 """
 
 import os
@@ -120,3 +130,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = "/home/"

@@ -6,5 +6,4 @@ from app.register.views import RegisterUser
 
 urlpatterns = [
     url(r'^$', RegisterUser.as_view(), name="register")
-
 ]

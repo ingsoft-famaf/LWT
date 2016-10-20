@@ -2,11 +2,11 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>{% block title %}Login{% endblock %}</title>
+  <title>{% block title %}ChoiceMaster{% endblock %}</title>
 </head>
 <body>
   <header>
-    <h1>PIBAS@ Login to sistem plis!!!!</h1>
+    <h1>ChoiceMaster</h1>
     {% if user.is_authenticated %}
       Hi {{ user.username }}!
       <a href="{% url 'logout' %}">logout</a>
