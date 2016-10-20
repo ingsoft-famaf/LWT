@@ -1,6 +1,9 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.shortcuts import render
 
 @login_required
 def home(request):
-  return HttpResponse('ChoiceMaster')
+    if request.user.is_superuser:
+        return render(request, 'home_admin.html')
+    else:
+        return render(request, 'home.html')
