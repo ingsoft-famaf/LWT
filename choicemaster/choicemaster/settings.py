@@ -16,8 +16,8 @@ Client Secret
     b92b40280e8401f7cadc4294fdbe5ba3bea98955
 
 GOOGLE
- 124896030792-b8sjqvop87vh6hngpf5c3d43mbh7co7g.apps.googleusercontent.com 
- EKF048snJ5FBIdhmiHHtxcoO 
+ 124896030792-b8sjqvop87vh6hngpf5c3d43mbh7co7g.apps.googleusercontent.com
+ EKF048snJ5FBIdhmiHHtxcoO
 """
 
 import os
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app.user',
+    'app.exam',
 ]
 
 MIDDLEWARE = [
