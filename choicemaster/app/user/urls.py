@@ -8,4 +8,5 @@ urlpatterns = [
     url(r'^$', auth_views.login, {'template_name': 'login.html', 'redirect_authenticated_user': True}, name='login'),
     url(r'^register/', RegisterUser.as_view(), name="register"),
     url(r'^logout/', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
+    url(r'^accounts/', include('allauth.urls')),
 ]

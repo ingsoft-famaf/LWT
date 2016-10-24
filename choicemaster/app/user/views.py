@@ -7,6 +7,7 @@ from django.views.generic import CreateView
 from django.core.urlresolvers import reverse_lazy
 from app.user.forms import RegisterForm
 
+
 class RegisterUser(CreateView):
     models = User
     template_name = "register.html"
