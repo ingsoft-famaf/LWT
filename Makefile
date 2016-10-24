@@ -9,5 +9,3 @@ clean:
 	rm -rf choicemaster/app/user/*~
 	rm -rf choicemaster/templates/*~
 	rm -rf *~
-	rm -rf choicemaster/app/exam/*.pyc
-	rm -rf choicemaster/app/exam/*~

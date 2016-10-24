@@ -9,6 +9,11 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 
+GITHUB
+Client ID
+    7a93ff53aa28a846bbb9
+Client Secret
+    b92b40280e8401f7cadc4294fdbe5ba3bea98955
 
 GOOGLE
  124896030792-b8sjqvop87vh6hngpf5c3d43mbh7co7g.apps.googleusercontent.com
@@ -42,24 +47,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'allauth.account',
-    'allauth.socialaccount',
-    # Login Github/Google providers
-    'allauth.socialaccount.providers.github',
-    'allauth.socialaccount.providers.google',
     'app.user',
     'app.exam',
 ]
-SITE_ID = 1
-
-AUTHENTICATION_BACKENDS = (
-    # Default backend
-    "django.contrib.auth.backends.ModelBackend",
-    # `allauth` specific authentication methods, such as login by e-mail
-    "allauth.account.auth_backends.AuthenticationBackend",
-)
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -143,14 +133,3 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = "/home/"
-
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'oauth2_provider.ext.rest_framework.OAuth2Authentication',
-    )
-}
-
-#GITHUB
-GITHUB_APP_ID = '7a93ff53aa28a846bbb9'
-GITHUB_API_SECRET = 'b92b40280e8401f7cadc4294fdbe5ba3bea98955'
