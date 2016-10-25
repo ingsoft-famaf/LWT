@@ -12,4 +12,4 @@ def init(request):
     if request.user.is_authenticated:
         return redirect('/home')
     else:
-        return redirect('user:login')
+        return redirect('/accounts/login')
