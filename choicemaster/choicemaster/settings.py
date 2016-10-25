@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'app.exam',
 ]
 
-SITE_ID = 1
+SITE_ID = 2
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth',
@@ -156,3 +156,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = "/home/"
+
+SOCIAL_ACCOUNT_PROVIDERS = {
+    'google':
+        {'SCOPE': ['profile', 'email'],
+         'AUTH_PARAMS': {'access_type': 'online'}}
+}
+
+GITHUB_CALLBACK_URL = "http://127.0.0.1:8000/accounts/github/login/callback/"
+
+GOOGLE_CALLBACK_URL = "http://127.0.0.1:8000/accounts/google/login/callback/"
