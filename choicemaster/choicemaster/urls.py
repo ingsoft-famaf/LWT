@@ -19,7 +19,6 @@ from views import home, init
 
 urlpatterns = [
     url(r'^$', init),
-    url(r'^user/', include('app.user.urls', namespace='user')),
     url(r'^home/', home),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
