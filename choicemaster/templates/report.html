@@ -1,15 +1,15 @@
 {% extends 'base.html' %}
-{% block title %}Reportes{% endblock %}
+{% block title %}Report Manager{% endblock %}
 {% block content %}
 {% if report_list %}
-  <h3>Reportes</h3>
+  <h3>Reports</h3>
   {% for report in report_list %}
-    <h4>{{ report.report_text }}</h3>
-    <form action="/admin">
-    <input type="submit" value="Modificar Pregunta" />
+    <h4>{{ report.report_text }}</h4>
+    <form action="/exam/adminreport/{{report.id}}/{{report.question.id}}/edit">
+    <input type="submit" value="Edit Question" />
     </form>
-    <form action="/admin">
-    <input type="submit" value="Editar Pregunta" />
+    <form action="/exam/adminreport/{{report.question.id}}/delete">
+    <input type="submit" value="Delete Question" />
     </form>
   {% endfor %}
 {% else %}

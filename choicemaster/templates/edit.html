@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Edit Question{% endblock %}
+{% block content %}
+  <h3>Question:</h3>
+  <p>{{ question.question_text }}</p>
+  <form action="/exam/adminreport/{{report.id}}/{{question.id}}/edited/" method="post">
+    {% csrf_token %}
+    <label for="edit_text"><h3>Edit:</h3></label>
+    <textarea rows="6" cols="50" id="edit_text" type="text" name="edit_text" value="{{ edit_text }}" >
+Enter text here...</textarea>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
