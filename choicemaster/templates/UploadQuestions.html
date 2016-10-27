@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Sube tus preguntas{% endblock %}
+
+{% block content %}
+<form method="post" action="/exam/upload/" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="file" name="files" multiple/>
+    <input type="submit" value="Upload"/>
+</form>
+{% endblock %}
+

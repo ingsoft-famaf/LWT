@@ -8,22 +8,15 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
-
-GITHUB
-Client ID
-    7a93ff53aa28a846bbb9
-Client Secret
-    b92b40280e8401f7cadc4294fdbe5ba3bea98955
-
-GOOGLE
- 124896030792-b8sjqvop87vh6hngpf5c3d43mbh7co7g.apps.googleusercontent.com
- EKF048snJ5FBIdhmiHHtxcoO
 """
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -33,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2zr1+b*k1t%x+&5@#9#=b$wjfp%ahwihlz8(n5)-_d=(y&00f_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True    
 
 ALLOWED_HOSTS = []
 
@@ -54,7 +47,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
-    'app.user',
     'app.exam',
 ]
 
