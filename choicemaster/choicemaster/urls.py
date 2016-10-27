@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^home/', home),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('allauth.urls')),
-    url(r'^exam/', include('app.exam.urls'))
+    url(r'^exam/', include('app.exam.urls')),
+    url(r'^upload/', include('app.xmlparsing.urls')),
 ]
