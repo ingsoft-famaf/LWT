@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Reportes{% endblock %}
+{% block content %}
+{% if report_list %}
+  <h3>Reportes</h3>
+  {% for report in report_list %}
+    <h4>{{ report.report_text }}</h3>
+    <form action="/admin">
+    <input type="submit" value="Modificar Pregunta" />
+    </form>
+    <form action="/admin">
+    <input type="submit" value="Editar Pregunta" />
+    </form>
+  {% endfor %}
+{% else %}
+    <p>No hay reportes pendientes.</p>
+{% endif %}
+{% endblock %}
