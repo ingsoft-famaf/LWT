@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %}Sube tus preguntas{% endblock %}
+{% block title %}Upload Questions{% endblock %}
 
 {% block content %}
-<form method="post" action="/exam/upload/" enctype="multipart/form-data"> {% csrf_token %}
-    <input type="file" name="files" multiple/>
+<form method="post" action="/upload/parse/" enctype="multipart/form-data"> {% csrf_token %}
+    <input type="file" name="file"/>
     <input type="submit" value="Upload"/>
 </form>
 {% endblock %}
-

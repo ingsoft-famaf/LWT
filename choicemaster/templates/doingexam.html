@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}Do your exam!{% endblock %}
+
+{% block content %}
+  <h3>Question</h3>
+  {% for question in ran_questions|slice:":1" %}
+    <p>{{ question.question_text }}</p>
+  {%endfor%}
+{% endblock %}

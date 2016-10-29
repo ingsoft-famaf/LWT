@@ -47,3 +47,12 @@ class Report(models.Model):
 
     def question_reported(self):
         return self.question
+
+class ExamModel(models.Model):
+    subject = models.CharField(max_length=100, default='Sin materia')
+    topic = models.CharField(max_length=100, default='Sin Tema')
+    time = models.IntegerField(default=0)
+    number_of_questions = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.subject + "" + self.topic

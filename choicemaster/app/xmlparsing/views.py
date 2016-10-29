@@ -1,5 +1,9 @@
 from django.shortcuts import render , redirect
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from .forms import UploadFileForm
+from .schema import VALIDATOR
+from lxml import etree
 
 # Create your views here.
 @login_required
@@ -10,21 +14,29 @@ def Form(request):
        return redirect('/home')
 
 @login_required
-def Upload(request):
+def Parse(request):
     if request.user.is_superuser:
-        for count, x in enumerate(request.FILES.getlist("files")):
-            
-            # precondicion de que el archivo no sea mayor a X MB (X ~ 50)
-            if UploadedFile.size > 419430400:  #si es mayor a 50 lo lee de a chunks de 1MB
-                UploadedFile.multiple_chunks(chunk_size=1048576)
-            else: #si no los agarra de una
-                UploadedFile.read()
+        if request.method == 'POST':
+            form = UploadFileForm(request.POST, request.FILES)
             xml_string = ''
-            for chunk in chunks:
-                xml_string += chunk
-
-            etree.fromstring(xml_string)
-        #return render(request,"uploadsuccessful.html")
-        return redirect('/home')
+            if form.is_valid():
+                if form.cleaned_data['file'].size > 41943040:
+                    form.cleaned_data['file'].multiple_chunks(chunk_size=1048576)
+                    for chunk in chunks:
+                        xml_string += chunk
+                else:
+                    xml_string = form.cleaned_data['file'].read()
+                doc = etree.fromstring(xml_string)
+                xmlschema_doc = etree.parse(VALIDATOR)
+                xmlschema = etree.XMLSchema(xmlschema_doc)
+                if (xmlschema.validate(doc)):
+                    return HttpResponse('buena wn')
+                else:
+                    return HttpResponse('la tai cagando')
+                return redirect('/success/url/')
+            else:
+                return redirect('/mal/url/')
+        else:
+            return redirect('/')
     else:
-        return redirect('/home')
+        return redirect('/')

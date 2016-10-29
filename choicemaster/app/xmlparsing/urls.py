@@ -4,5 +4,5 @@ from app.xmlparsing import views
 
 urlpatterns = [
         url(r'^form/$', views.Form),
-        url(r'^upload/$', views.Upload),
+        url(r'^parse/$', views.Parse),
 ]

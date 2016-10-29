@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from .models import Report, Question
+from .models import Report, Question, ExamModel
 from django.contrib.auth.decorators import login_required
-from .forms import EditForm
+from .forms import EditForm, ExamForm
+import random
 # Create your views here.
 
 @login_required
@@ -51,4 +52,34 @@ def edit_question(request, question_id, report_id):
         return redirect('/')
     return redirect('/exam/adminreport')
 
+@login_required
+def create_exam(request):
+    if request.method == 'POST':
+        form = ExamForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            topic = form.cleaned_data['topic']
+            timer = form.cleaned_data['timer']
+            nquestions = form.cleaned_data['number_of_questions']
+            exam = ExamModel(subject=subject, topic=topic, time=timer, number_of_questions=nquestions)
+            exam.save()
+            question_list = Question.objects.filter(subject=subject, topic=topic)
+            if len(question_list) >= nquestions:
+                ran_questions = random.sample(question_list, nquestions)
+            else:
+                return redirect('/exam/something_went_wrong')
+            context = {'exam': exam, 'ran_questions': ran_questions}
+            return render(request, 'doingexam.html', context)
+        else:
+            form = ExamForm()
+            return render(request,'create_exam.html',{
+            'form': form,
+            })
+    else:
+        form = ExamForm()
+        return render(request,'create_exam.html',{
+        'form': form,
+        })
 
+def sth_wrong(request):
+    return render(request, 'sth_wrong.html')
