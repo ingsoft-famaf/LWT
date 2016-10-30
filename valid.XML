@@ -3,6 +3,7 @@
 	<topic>
 		<ttext>tema1</ttext>
 		<question>
+			<qtext>pregunta1</qtext>
 			<tanswer>p1rc</tanswer>
 			<answer>p1r1</answer>
 			<answer>p1r2</answer>
