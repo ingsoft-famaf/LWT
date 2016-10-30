@@ -1,26 +1,32 @@
 <subject>
+	<stext>materia</stext>
 	<topic>
+		<ttext>tema1</ttext>
 		<question>
-			<tanswer></tanswer>
-			<answer></answer>
-			<answer></answer>
+			<tanswer>p1rc</tanswer>
+			<answer>p1r1</answer>
+			<answer>p1r2</answer>
 		</question>
 		<question>
-			<tanswer></tanswer>
-			<answer></answer>
-			<answer></answer>
+			<qtext>pregunta2</qtext>
+			<tanswer>p2rc</tanswer>
+			<answer>p2r1</answer>
+			<answer>p2r2</answer>
 		</question>
 	</topic>
 	<topic>
+		<ttext>tema2</ttext>
 		<question>
-			<tanswer></tanswer>
-			<answer></answer>
-			<answer></answer>
+			<qtext>pregunta3</qtext>
+			<tanswer>p3rc</tanswer>
+			<answer>p3r1</answer>
+			<answer>p3r2</answer>
 		</question>
 		<question>
-			<tanswer></tanswer>
-			<answer></answer>
-			<answer></answer>
+			<qtext>pregunta4</qtext>
+			<tanswer>p4rc</tanswer>
+			<answer>p4r1</answer>
+			<answer>p4r2</answer>
 		</question>
 	</topic>
 </subject>

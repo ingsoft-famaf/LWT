@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Bienvenido{% endblock %}
+{% block title %}Welcome!{% endblock %}
 
 {% block content %}
     <form action="/admin">
-    <input type="submit" value="Administracion" />
+    <input type="submit" value="Administration" />
+    </form>
+    <form action="/upload/form/">
+    <input type="submit" value="Upload Questions" />
     </form>
     <form action="https://i.ytimg.com/vi/npPg-IAPzJA/maxresdefault.jpg">
-        <input type="submit" value="Estadisticas" />
+        <input type="submit" value="Stadistics" />
     </form>
     <form action="/exam/create_exam/">
-        <input type="submit" value="Realizar examen" />
+        <input type="submit" value="Take an exam" />
     </form>
 {% endblock %}

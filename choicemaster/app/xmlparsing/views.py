@@ -1,10 +1,9 @@
 from django.shortcuts import render , redirect
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from .forms import UploadFileForm
 from .schema import VALIDATOR
 from lxml import etree
-
+from ..exam.models import Question, Choice
 # Create your views here.
 @login_required
 def Form(request):
@@ -29,14 +28,43 @@ def Parse(request):
                 doc = etree.fromstring(xml_string)
                 xmlschema_doc = etree.parse(VALIDATOR)
                 xmlschema = etree.XMLSchema(xmlschema_doc)
-                if (xmlschema.validate(doc)):
-                    return HttpResponse('buena wn')
+                if xmlschema.validate(doc):
+                    sj_children = list(doc)
+                    for tchild in sj_children:
+                        if tchild.tag == 'stext':
+                            subject = tchild.text
+                        else:
+                            for qchild in tchild:
+                                if qchild.tag == 'ttext':
+                                    topic =  qchild.text
+                                else:
+                                    for child in qchild:
+                                        if child.tag == 'qtext':
+                                            question = child.text
+                                        else:
+                                            answer = child.text
+                                        if question is not None:
+                                            q = Question(subject=subject, topic=topic, question_text=question)
+                                            q.save()
+                                            question = None
+                                        elif q is not None:
+                                            if child.tag == 'tanswer':
+                                                c = Choice(question=q, choice_text=answer, is_correct=True)
+                                            else:
+                                                c = Choice(question=q, choice_text=answer)
+                                            c.save()
                 else:
-                    return HttpResponse('la tai cagando')
-                return redirect('/success/url/')
+                    return redirect('/upload/something_went_wrong')
+                return redirect('/upload/success/')
             else:
-                return redirect('/mal/url/')
+                return redirect('/upload/something_went_wrong')
         else:
             return redirect('/')
     else:
         return redirect('/')
+
+def Sth_wrong_admin(request):
+    return render(request, 'sth_wrong_admin.html')
+
+def Success(request):
+    return render(request, 'xml_success.html')

@@ -5,17 +5,20 @@ VALIDATOR = StringIO('''\
   <xs:element name="subject" type="subjectType"/>
   <xs:complexType name="questionType">
     <xs:sequence>
+      <xs:element type="xs:string" name="qtext"/>
       <xs:element type="xs:string" name="tanswer"/>
-      <xs:element type="xs:string" name="answer" maxOccurs="2" minOccurs="2"/>
+      <xs:element type="xs:string" name="answer" maxOccurs="unbounded" minOccurs="2"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="topicType">
     <xs:sequence>
+      <xs:element type="xs:string" name="ttext"/>
       <xs:element type="questionType" name="question" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="subjectType">
     <xs:sequence>
+      <xs:element type="xs:string" name="stext"/>
       <xs:element type="topicType" name="topic" maxOccurs="unbounded" minOccurs="1"/>
     </xs:sequence>
   </xs:complexType>
