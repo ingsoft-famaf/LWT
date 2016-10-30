@@ -7,5 +7,7 @@ clean:
 	rm -rf choicemaster/app/*~
 	rm -rf choicemaster/app/exam/*.pyc
 	rm -rf choicemaster/app/exam/*~
+	rm -rf choicemaster/app/xmlparsing/*.pyc
+	rm -rf choicemaster/app/xmlparsing/*~
 	rm -rf choicemaster/templates/*~
 	rm -rf *~

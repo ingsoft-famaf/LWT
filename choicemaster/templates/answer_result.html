@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Question result{% endblock %}
+{% block content %}
+  <h3>Question:</h3>
+  <p>{{ question.question_text }}</p>
+  {% for choice in question.choice_set.all %}
+    {% if choice.is_correct %}
+      <h4>Correct answer:</h4>
+      <p>{{ choice.choice_text }}</p>
+    {% else %}
+      <h4>Incorrect answer:</h4>
+      <p>{{ choice.choice_text }}</p>
+    {% endif %}
+  {% endfor %}
+
+  <h3>Your choice:</h3>
+  <p>{{ answer.choice_text }}</p>
+
+  <form action="/exam/do/{{exam.id}}/{{question.id}}/">
+      <input type="submit" value="Continue" />
+  </form>
+
+  <form action="/exam/do/{{exam.id}}/{{question.id}}/" method="post">
+    {% csrf_token %}
+    <label for="edit_text"><h3>Report Question:</h3></label>
+    <textarea rows="6" cols="50" id="report" type="text" name="report" value="{{ report }}" >
+Enter text here...</textarea>
+    <input type="submit" value="Submit">
+  </form>
+{% endblock %}
