@@ -60,7 +60,7 @@ def create_exam(request):
             subject = form.cleaned_data['subject']
             topic = form.cleaned_data['topic']
             timer = form.cleaned_data['timer']
-            #timer = timer * 60000
+            timer = timer * 60000
             nquestions = form.cleaned_data['number_of_questions']
             exam = ExamModel(subject=subject, topic=topic, time=timer, number_of_questions=nquestions)
             exam.save()
