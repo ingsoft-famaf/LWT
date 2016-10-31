@@ -86,29 +86,6 @@ def create_exam(request):
 
 @login_required
 def doexam (request, exam_id, question_id):
-    if request.method == 'POST':
-        exam = ExamModel.objects.get(id=exam_id)
-        choice_id = request.POST['choice']
-        choice = Choice.objects.get(id=choice_id)
-        if choice.correct():
-            exam.is_correct()
-        q = Question.objects.get(id=question_id)
-        sq = Selected_question.objects.get(exam= exam, question=q)
-        sq.delete()
-        sel_qs = Selected_question.objects.filter(exam=exam)
-        if sel_qs is not None:
-            ran_questions = []
-            for sel_q in sel_qs:
-                ran_questions.append(sel_q.question)
-            context = {'exam': exam, 'ran_questions': ran_questions}
-            return render(request, 'doingexam.html', context)
-        else:
-            result = exam
-    else:
-        return redirect('/exam/something_went_wrong')
-
-@login_required
-def doexam (request, exam_id, question_id):
     exam = ExamModel.objects.get(id=exam_id)
     if request.method == 'POST':
         if request.POST.get('report') is not None:
