@@ -34,17 +34,25 @@ def edit(request, question_id, report_id):
         return redirect('/')
 
 @login_required
-def edit_question(request, question_id, report_id):
+def edit_question(request, question_id, report_id, choice_id):
     if request.user.is_superuser:
         if request.method == 'POST':
             form = EditForm(request.POST)
             if form.is_valid():
-                q = Question.objects.get(id = question_id)
-                text = form.cleaned_data['edit_text']
-                q.question_text = text
-                q.save()
-                r = Report.objects.get(id = report_id)
-                r.delete()
+                if choice_id == 0:
+                    q = Question.objects.get(id = question_id)
+                    text = form.cleaned_data['edit_text']
+                    q.question_text = text
+                    q.save()
+                    r = Report.objects.get(id = report_id)
+                    r.delete()
+                else:
+                    c = Choice.objects.get(id = choice_id)
+                    text = form.cleaned_data['edit_text']
+                    c.choice_text = text
+                    c.save()
+                    r = Report.objects.get(id = report_id)
+                    r.delete()
                 return redirect('/exam/adminreport')
         else:
             form = EditForm()

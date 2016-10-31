@@ -3,11 +3,23 @@
 {% block content %}
   <h3>Question:</h3>
   <p>{{ question.question_text }}</p>
-  <form action="/exam/adminreport/{{report.id}}/{{question.id}}/edited/" method="post">
+  <form action="/exam/adminreport/{{report.id}}/{{question.id}}/0/edited/" method="post">
     {% csrf_token %}
     <label for="edit_text"><h3>Edit:</h3></label>
     <textarea rows="6" cols="50" id="edit_text" type="text" name="edit_text" value="{{ edit_text }}" >
 Enter text here...</textarea>
     <input type="submit" value="Submit">
   </form>
+
+  <h3>Choices:</h3>
+  {% for choice in question.choice_set.all %}
+  <p>{{ choice.choice_text }}</p>
+  <form action="/exam/adminreport/{{report.id}}/{{question.id}}/{{choice.id}}/edited/" method="post">
+    {% csrf_token %}
+    <label for="edit_text"><h3>Edit:</h3></label>
+    <textarea rows="6" cols="50" id="edit_text" type="text" name="edit_text" value="{{ edit_text }}" >
+Enter text here...</textarea>
+    <input type="submit" value="Submit">
+  </form>
+  {% endfor %}
 {% endblock %}

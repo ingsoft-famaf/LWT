@@ -12,7 +12,14 @@
     <input type="submit" value="Delete Question" />
     </form>
   {% endfor %}
+
+  <form action="/">
+  <input type="submit" value="Home" />
+  </form>
 {% else %}
     <p>No hay reportes pendientes.</p>
+    <form action="/">
+    <input type="submit" value="Home" />
+    </form>
 {% endif %}
 {% endblock %}
