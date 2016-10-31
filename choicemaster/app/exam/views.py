@@ -60,6 +60,7 @@ def create_exam(request):
             subject = form.cleaned_data['subject']
             topic = form.cleaned_data['topic']
             timer = form.cleaned_data['timer']
+            #timer = timer * 60000
             nquestions = form.cleaned_data['number_of_questions']
             exam = ExamModel(subject=subject, topic=topic, time=timer, number_of_questions=nquestions)
             exam.save()
@@ -109,8 +110,6 @@ def doexam (request, exam_id, question_id):
                 return render(request, 'result.html', context)
         else:
             question = Question.objects.get(id=question_id)
-            sq = Selected_question.objects.get(exam= exam, question=question)
-            sq.delete()
             choice_id = request.POST['choice']
             answer = Choice.objects.get(id=choice_id)
             if answer.correct():
@@ -119,6 +118,9 @@ def doexam (request, exam_id, question_id):
             context = {'exam': exam, 'question': question, 'answer': answer}
             return render(request, 'answer_result.html', context)
     else:
+        question = Question.objects.get(id=question_id)
+        sq = Selected_question.objects.get(exam= exam, question=question)
+        sq.delete()
         sel_qs = Selected_question.objects.filter(exam=exam)
         if sel_qs.exists():
             ran_questions = []
