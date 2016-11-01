@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'app.xmlparsing'
 ]
 
-SITE_ID = 2
+SITE_ID = 0
 
 AUTHENTICATION_BACKENDS = (
     'social.backends.google.GoogleOAuth',
