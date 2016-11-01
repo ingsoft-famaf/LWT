@@ -4,6 +4,7 @@ from .forms import UploadFileForm
 from .schema import VALIDATOR
 from lxml import etree
 from ..exam.models import Question, Choice
+from editdistance import eval
 # Create your views here.
 @login_required
 def Form(request):
@@ -38,14 +39,22 @@ def Parse(request):
                                 if qchild.tag == 'ttext':
                                     topic =  qchild.text
                                 else:
+                                    question = None
+                                    q = None
                                     for child in qchild:
                                         if child.tag == 'qtext':
                                             question = child.text
                                         else:
                                             answer = child.text
                                         if question is not None:
-                                            q = Question(subject=subject, topic=topic, question_text=question)
-                                            q.save()
+                                            ql = Question.objects.all()
+                                            duplicated = False
+                                            for qeval in ql:
+                                                if eval(qeval.question_text, question) < 6:
+                                                    duplicated = True
+                                            if not duplicated:
+                                                q = Question(subject=subject, topic=topic, question_text=question)
+                                                q.save()
                                             question = None
                                         elif q is not None:
                                             if child.tag == 'tanswer':
