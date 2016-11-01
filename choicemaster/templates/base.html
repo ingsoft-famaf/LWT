@@ -3,12 +3,27 @@
 <head>
   <meta charset="utf-8">
   <title>{% block title %}ChoiceMaster{% endblock %}</title>
+  <style>
+    p{color: red;}
+    h1 {  font-family: "ChoiceMaster", cursive;
+    color: white;}
+    a{ color: white }
+    b{color: white}
+    body {
+      background-position: center;
+      background-image: url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTS0QFDyWGnrZHC0lbvcMbF1zur_Xi5K5pzpzJm4_xQHB4-gP2l);
+      background-size: auto 200%;
+
+    }
+  </style>
 </head>
+<body 
+
 <body>
   <header>
     <h1>ChoiceMaster</h1>
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
+      <b>Hi {{ user.username }}!</b>
       <a href="/accounts/logout/">Logout</a>
     {% else %}
       <a href="/accounts/login/">Login</a>
